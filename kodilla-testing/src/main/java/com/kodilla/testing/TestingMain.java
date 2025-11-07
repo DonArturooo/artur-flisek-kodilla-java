@@ -1,31 +1,34 @@
 package com.kodilla.testing;
 
-import java.util.ArrayList;
+import com.kodilla.testing.calculator.Calculator;
+import com.kodilla.testing.user.SimpleUser;
 
 public class TestingMain  {
     public static void main(String[] args) {
-        System.out.println("Moduł 6. Wprowadzenie to testowania oprogramowania");
+        SimpleUser simpleUser = new SimpleUser("theForumUser");
+        Calculator calculator = new Calculator();
 
-        ArrayList<Character> vowels = findVowels("Adam");
+        System.out.println("SimpleUser - testy jednostkowe:");
+        String result = simpleUser.getUsername();
 
-        vowels.forEach(System.out::print);
-    }
-
-    public static ArrayList<Character> findVowels(String string){
-        String vowels = "aeiouAEIOU";
-        ArrayList<Character> vowelsList = new ArrayList<>();
-        for(char c : vowels.toCharArray()){
-            vowelsList.add(c);
+        if (result.equals("theForumUser")) {
+            System.out.println("test OK");
+        } else {
+            System.out.println("Error!");
         }
 
-        ArrayList<Character> findVowels = new ArrayList<>();
+        System.out.println("Calculator - testy jednostkowe:");
 
-        for(Character c : string.toCharArray()){
-            if(vowelsList.contains(c)){
-                findVowels.add(c);
-            }
+        if ( calculator.add(2, 2 ) == 4){
+            System.out.println("Metoda add działa poprawnie");
+        } else  {
+            System.out.println("Error!");
         }
 
-        return findVowels;
+        if ( calculator.subtract(2, 2 ) == 0){
+            System.out.println("Metoda subtract działa poprawnie");
+        } else  {
+            System.out.println("Error!");
+        }
     }
 }
