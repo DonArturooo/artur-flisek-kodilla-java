@@ -6,7 +6,7 @@ import org.junit.jupiter.api.*;
 class ShapeCollectorTestSuite {
 
     private static int testCounter = 0;
-    private static final ShapeCollector shapeCollector = new ShapeCollector();
+
 
     @BeforeAll
     public static void beforeAllTests() {
@@ -27,6 +27,8 @@ class ShapeCollectorTestSuite {
     @Nested
     @DisplayName("Test adding shapes")
     class TestCircle {
+       private static final ShapeCollector shapeCollector = new ShapeCollector();
+
         @Test
         @DisplayName("Add Circle")
         public void addCircle() {
@@ -61,6 +63,8 @@ class ShapeCollectorTestSuite {
     @Nested
     @DisplayName("Test remove shape")
     class TestSquare {
+        private static final ShapeCollector shapeCollector = new ShapeCollector();
+
         @Test
         @DisplayName("Testing to remove not exists shape on list")
         public void removeNotExistsShape() {
@@ -103,6 +107,15 @@ class ShapeCollectorTestSuite {
     @DisplayName("Show Figures")
     @Test
     public void showFigures() {
+        ShapeCollector shapeCollector = new ShapeCollector();
+
+        Circle circle = new Circle(5);
+        shapeCollector.addFigure(circle);
+        Square square = new Square(5);
+        shapeCollector.addFigure(square);
+        Triangle triangle = new Triangle(5, 2, 4);
+        shapeCollector.addFigure(triangle);
+
         Assertions.assertEquals("Circle, Square, Triangle", shapeCollector.showFigures());
     }
 }
