@@ -11,7 +11,9 @@ public class PoemBeautifier {
             return text;
         }
 
-        String[] words = text.toLowerCase().trim().split("[^a-zA-Z0-9]+");
+        String[] words = text.toLowerCase()
+                             .trim()
+                             .split("[^a-zA-Z0-9]+");
 
         if (words.length == 1) {
             return words[0];
