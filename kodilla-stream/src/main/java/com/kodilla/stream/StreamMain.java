@@ -62,5 +62,19 @@ public class StreamMain {
                    .collect(Collectors.toMap(ForumUser::getId, forumUser -> forumUser))
                    .entrySet()
                    .forEach(System.out::println);
+
+        System.out.println(backWord("Ewa"));
+    }
+
+
+    //Zadanie dodatkowe 7.6
+    public static String backWord(String word) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = word.length() - 1; i >= 0; i--) {
+            result.append(word.charAt(i));
+        }
+
+        return result.toString();
     }
 }
