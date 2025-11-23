@@ -41,7 +41,9 @@ public interface InitializationService {
             Airport departure = getRandomAirport();
             while (true) {
                 assert departure != null;
-                if (!departure.equals(arrival)) break;
+                if (!departure.equals(arrival)) {
+                    break;
+                }
                 arrival = getRandomAirport();
             }
             FlightService.registerFlight(departure, arrival);

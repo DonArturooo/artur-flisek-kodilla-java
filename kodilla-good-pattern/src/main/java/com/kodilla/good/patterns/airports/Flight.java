@@ -9,9 +9,11 @@ public class Flight {
         this.arrival = arrival;
         this.departure = departure;
     }
+
     public Airport getArrival() {
         return arrival;
     }
+
     public Airport getDeparture() {
         return departure;
     }
