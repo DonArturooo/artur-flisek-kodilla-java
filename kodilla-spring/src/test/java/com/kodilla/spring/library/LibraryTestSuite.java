@@ -3,19 +3,13 @@ package com.kodilla.spring.library;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-@SpringBootTest(classes = {Library.class, LibraryDbController.class})
+import java.util.Arrays;
+
+@SpringBootTest(classes = LibraryConfig.class)
 public class LibraryTestSuite {
-
-//    ApplicationContext applicationContext;
-//    Library library;
-
-//    @BeforeEach
-//    void  init()
-//    {
-//        applicationContext = new AnnotationConfigApplicationContext("com.kodilla.spring.library");
-//        library = applicationContext.getBean(Library.class);
-//    }
 
     @Autowired
     Library library;
@@ -28,5 +22,14 @@ public class LibraryTestSuite {
     @Test
     void testSaveToDatabase() {
         library.saveToDb();
+    }
+
+    @Test
+    void testContext() {
+        ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
+
+        System.out.println("===== Beans list: ==== >");
+        Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
+        System.out.println("<< ===== Beans list ====");
     }
 }
