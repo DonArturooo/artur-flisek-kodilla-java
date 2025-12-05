@@ -1,13 +1,13 @@
-package com.kodilla.spring.web;
+package com.kodilla.patterns;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KodilaSpringWebApplication {
+public class KodillaPatternsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KodilaSpringWebApplication.class, args);
+        SpringApplication.run(KodillaPatternsApplication.class, args);
     }
 
 }
