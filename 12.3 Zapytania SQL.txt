@@ -1,0 +1,47 @@
+CREATE TABLE ISSUESLISTS
+(
+    ID   SERIAL PRIMARY KEY,
+    NAME VARCHAR(200) NOT NULL
+);
+
+
+CREATE TABLE ISSUES
+(
+    ID                 SERIAL PRIMARY KEY,
+    ISSUESLIST_ID      BIGINT UNSIGNED NOT NULL,
+    SUMMARY            VARCHAR(200)    NOT NULL,
+    DESCRIPTION        VARCHAR(1000)   NOT NULL,
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS (ID),
+    FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS (ID)
+);
+
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("ToDo");
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("In progress");
+INSERT INTO ISSUESLISTS (NAME)
+VALUES ("Done");
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (1, 'Zadanie 1 – ToDo', 'Opis zadania 1 z listy ToDo', 1),
+       (1, 'Zadanie 2 – ToDo', 'Opis zadania 2 z listy ToDo', 2),
+       (1, 'Zadanie 3 – ToDo', 'Opis zadania 3 z listy ToDo', 3),
+       (1, 'Zadanie 4 – ToDo', 'Opis zadania 4 z listy ToDo', 1),
+       (1, 'Zadanie 5 – ToDo', 'Opis zadania 5 z listy ToDo', 2);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (2, 'Zadanie 1 – In progress', 'Opis zadania 1 z listy In progress', 2),
+       (2, 'Zadanie 2 – In progress', 'Opis zadania 2 z listy In progress', 1),
+       (2, 'Zadanie 3 – In progress', 'Opis zadania 3 z listy In progress', 3),
+       (2, 'Zadanie 4 – In progress', 'Opis zadania 4 z listy In progress', 2),
+       (2, 'Zadanie 5 – In progress', 'Opis zadania 5 z listy In progress', 1);
+
+INSERT INTO ISSUES (ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+VALUES (3, 'Zadanie 1 – Done', 'Opis zadania 1 z listy Done', 3),
+       (3, 'Zadanie 2 – Done', 'Opis zadania 2 z listy Done', 2),
+       (3, 'Zadanie 3 – Done', 'Opis zadania 3 z listy Done', 1),
+       (3, 'Zadanie 4 – Done', 'Opis zadania 4 z listy Done', 3),
+       (3, 'Zadanie 5 – Done', 'Opis zadania 5 z listy Done', 2);
+
+COMMIT;
