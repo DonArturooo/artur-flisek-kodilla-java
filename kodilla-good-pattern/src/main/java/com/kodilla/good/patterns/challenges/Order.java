@@ -1,30 +1,23 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.math.BigInteger;
+import java.util.Map;
 
 public class Order {
 
-    final int id;
+    final BigInteger id;
     double price;
-    List<Product> products = new ArrayList<>();
+    Map<Product, Integer> products;
 
-    public Order(int id) {
-        this.id = id;
-    }
-
-    public Order(int id, List<Product> products) {
+    public Order(BigInteger id, Map<Product, Integer> products) {
         this.id = id;
         this.products = products;
     }
 
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-
     public double getTotalPrice() {
-        for (Product product : products) {
-            price += product.getPrice();
+        for (Map.Entry<Product, Integer> product : products.entrySet()) {
+            price += product.getKey()
+                            .getPrice() * product.getValue();
         }
 
         return price;

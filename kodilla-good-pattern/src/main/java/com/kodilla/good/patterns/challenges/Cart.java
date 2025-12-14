@@ -1,16 +1,16 @@
 package com.kodilla.good.patterns.challenges;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Cart {
-    List<Product> products = new ArrayList<>();
+    Map<Product, Integer> products = new HashMap<>();
 
-    public void addProduct(Product product) {
-        products.add(product);
+    public void addProduct(Product product, int quantity) {
+        products.put(product, quantity);
     }
 
-    public List<Product> getProducts() {
+    public Map<Product, Integer> getProducts() {
         return products;
     }
 }

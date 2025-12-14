@@ -15,13 +15,12 @@ public class OrderServiceRunner {
         Product backpack = new Product("Herschel Little America", 399);
         Product chair = new Product("DXRacer Formula", 1299);
 
-        cart.addProduct(boots);
-        cart.addProduct(phone);
-        cart.addProduct(headphones);
-        cart.addProduct(mouse);
+        cart.addProduct(boots, 1);
+        cart.addProduct(phone, 2);
+        cart.addProduct(headphones, 3);
+        cart.addProduct(mouse, 5);
 
-        ProductOrderService productOrderService = new ProductOrderService();
-        Order order = productOrderService.orderProducts(cart.getProducts());
+        Order order = new Adidas().orderProducts(cart.getProducts());
 
         System.out.println(order.getTotalPrice());
     }
