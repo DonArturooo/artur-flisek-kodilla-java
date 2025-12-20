@@ -9,12 +9,28 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedNativeQuery;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
+@NamedQueries({
+        @NamedQuery(name = "Task.retrieveLongTasks", query = "FROM Task WHERE duration > 10"),
+        @NamedQuery(name = "Task.retrieveShortTasks", query = "FROM Task WHERE duration <= 10"),
+        @NamedQuery(name = "Task.retrieveTasksWithDurationLongerThan", query = "FROM Task WHERE duration > :DURATION")
+})
+@NamedNativeQuery(
+        name = "Task.retrieveTasksWithEnoughTime",
+        query = """
+                SELECT * FROM TASKS
+                WHERE DATEDIFF(DATE_ADD(CREATED, INTERVAL DURATION DAY), NOW()) > 5
+                """,
+        resultClass =  Task.class
+)
 @Entity
 @Table(name = "TASKS")
 public class Task {
