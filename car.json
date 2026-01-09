@@ -1,0 +1,23 @@
+{
+  "carName": "RX-8",
+  "carBrand": "Mazda",
+  "seats": [
+    {
+      "material": "Alcantara",
+      "color": "White"
+    },
+    {
+      "material": "Alcantara",
+      "color": "White"
+    },
+    {
+      "material": "Alcantara",
+      "color": "White"
+    },
+    {
+      "material": "Alcantara",
+      "color": "White"
+    }
+  ],
+  "engineCapacity": "1300ccm"
+}
