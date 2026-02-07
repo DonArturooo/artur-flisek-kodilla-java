@@ -6,14 +6,25 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.findByFirstLetters",
-        query = """
+@NamedQuery(name = "Company.findFromCompanyName", query = "FROM Company WHERE name  like CONCAT('%', :VALUE, '%')")
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.findByFirstLetters",
+                query = """
         SELECT * FROM COMPANIES
         WHERE COMPANY_NAME LIKE CONCAT(:STR, '%')
         """,
-        resultClass = Company.class
-)
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.findCompanyFromId",
+                query = """
+        SELECT * FROM COMPANIES
+        WHERE COMPANY_ID LIKE CONCAT('%', :VALUE, '%')
+        """,
+                resultClass = Company.class
+        )
+})
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

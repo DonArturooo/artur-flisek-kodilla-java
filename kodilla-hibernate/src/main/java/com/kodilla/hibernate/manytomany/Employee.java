@@ -6,10 +6,12 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
-        name = "Employee.findByLastname",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
-)
+@NamedQueries({
+        @NamedQuery(name = "Employee.findByLastname", query = "FROM Employee WHERE lastname = :LASTNAME"),
+        @NamedQuery(name = "Employee.findFromLastname", query = "FROM Employee WHERE lastname like CONCAT('%', :VALUE, '%')"),
+        @NamedQuery(name = "Employee.findFromFirstname", query = "FROM Employee WHERE firstname like CONCAT('%', :VALUE, '%')"),
+        @NamedQuery(name = "Employee.findEmployeeFromId", query = "FROM Employee WHERE 'employee_id' like CONCAT('%', :VALUE, '%')")
+})
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
@@ -48,11 +50,7 @@ public class Employee {
     }
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "JOIN_COMPANY_EMPLOYEE",
-            joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}
-    )
+    @JoinTable(name = "JOIN_COMPANY_EMPLOYEE", joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")}, inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")})
     public List<Company> getCompanies() {
         return companies;
     }

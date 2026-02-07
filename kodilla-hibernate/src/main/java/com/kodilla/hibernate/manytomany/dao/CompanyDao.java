@@ -11,8 +11,14 @@ import java.util.List;
 
 @Transactional
 @Repository
-public interface CompanyDao extends CrudRepository<Company,Integer> {
+public interface CompanyDao extends CrudRepository<Company, Integer> {
 
     @Query(nativeQuery = true)
     List<Company> findByFirstLetters(@Param("STR") String str);
+
+    @Query
+    List<Company> findFromCompanyName(@Param("VALUE") String name);
+
+    @Query(nativeQuery = true)
+    List<Company> findCompanyFromId(@Param("VALUE") long id);
 }
