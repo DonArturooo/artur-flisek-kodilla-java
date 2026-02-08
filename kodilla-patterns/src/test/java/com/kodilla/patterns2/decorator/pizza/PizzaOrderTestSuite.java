@@ -17,7 +17,6 @@ class PizzaOrderTestSuite {
 
     @Test
     void getCost() {
-        assertAll(() -> assertEquals(new BigDecimal(15), pizzaOrder.getCost()));
         assertAll(() -> assertEquals(new BigDecimal(15), pizzaOrder.getCost()), () -> {
             pizzaOrder = new HamIngredient(pizzaOrder);
             assertEquals(new BigDecimal(16), pizzaOrder.getCost());
