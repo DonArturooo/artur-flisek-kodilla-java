@@ -53,7 +53,7 @@ public class StoredProcTestSuite {
         statement2.execute(sqlProcedureCall);
         ResultSet bestsellerQueryResult = statement.executeQuery(sqlCheckBestseller);
         List<Integer> bestsellerIds = new ArrayList<>();
-        if (bestsellerQueryResult.next()) {
+        while (bestsellerQueryResult.next()) {
             bestsellerIds.add(bestsellerQueryResult.getInt("BOOK_ID"));
         }
         ResultSet resultSet = statement.executeQuery(sqlBooks);

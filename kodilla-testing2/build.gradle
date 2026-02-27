@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.kodilla'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext['seleniumVersion'] = System.getProperty('selenium.version', '4.41.0')
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    implementation "org.seleniumhq.selenium:selenium-grid:${seleniumVersion}"
+    testImplementation 'com.titusfortner:selenium-logger:2.4.0'
+}
+
+test {
+    useJUnitPlatform()
+}
