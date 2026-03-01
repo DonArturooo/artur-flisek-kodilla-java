@@ -33,5 +33,7 @@ public class FacebookTestingApp {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[text()=\"maja\"]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(YEAR))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[text()=\"1996\"]"))).click();
+
+        driver.quit();
     }
 }

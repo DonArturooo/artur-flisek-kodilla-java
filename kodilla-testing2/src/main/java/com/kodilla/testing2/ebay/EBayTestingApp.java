@@ -10,6 +10,7 @@ public class EBayTestingApp {
 
         WebElement searchField = driver.findElement(By.xpath("//*[@id=\"gh-ac\"]"));
         searchField.sendKeys("Laptop");
+        driver.findElement(By.xpath("//button[@id=\"gh-search-btn\"]")).click();
 
         driver.quit();
     }
